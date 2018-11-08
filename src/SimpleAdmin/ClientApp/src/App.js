@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import React from 'react';
+import { Admin, Resource } from 'react-admin';
 
-export default class App extends Component {
-  displayName = App.name
+import dataProvider from './dataProvider';
+import dashboard from './dashboard';
+import { UserShow, UserEdit, UserList } from './resources/users/index'
 
-  render() {
-    return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetchdata' component={FetchData} />
-      </Layout>
-    );
-  }
-}
+const App = () => (
+    <Admin dashboard={dashboard} dataProvider={dataProvider} title="RP16 Administration">
+        <Resource name="users" show={UserShow} list={UserList} edit={UserEdit} options={{ label: 'Available Users' }} />
+    </Admin>
+);
+
+export default App;
