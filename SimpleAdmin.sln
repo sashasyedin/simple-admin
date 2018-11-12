@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAdmin", "src\SimpleAdmin\SimpleAdmin.csproj", "{CE74E5BC-26C4-466F-8602-2F4CD49E8A53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAdmin.App", "src\SimpleAdmin.App\SimpleAdmin.App.csproj", "{CE74E5BC-26C4-466F-8602-2F4CD49E8A53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAdmin.Services", "src\SimpleAdmin.Services\SimpleAdmin.Services.csproj", "{F92CAC83-50D4-4B8F-AFFB-905EB9171A97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CE74E5BC-26C4-466F-8602-2F4CD49E8A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE74E5BC-26C4-466F-8602-2F4CD49E8A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE74E5BC-26C4-466F-8602-2F4CD49E8A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92CAC83-50D4-4B8F-AFFB-905EB9171A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92CAC83-50D4-4B8F-AFFB-905EB9171A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92CAC83-50D4-4B8F-AFFB-905EB9171A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92CAC83-50D4-4B8F-AFFB-905EB9171A97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
