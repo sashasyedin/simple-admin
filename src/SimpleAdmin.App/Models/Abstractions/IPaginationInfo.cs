@@ -1,4 +1,4 @@
-﻿namespace SimpleAdmin.Models.Abstractions
+﻿namespace SimpleAdmin.App.Models.Abstractions
 {
     public interface IPaginationInfo
     {

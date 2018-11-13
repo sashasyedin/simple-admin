@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\SimpleAdmin.Contracts\SimpleAdmin.Contracts.csproj" />
+    <ProjectReference Include="..\..\SimpleAdmin.Utils\SimpleAdmin.Utils.csproj" />
     <ProjectReference Include="..\SimpleAdmin.Services\SimpleAdmin.Services.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
-﻿using SimpleAdmin.Models.Abstractions;
+﻿using SimpleAdmin.App.Models.Abstractions;
 
-namespace SimpleAdmin.Models
+namespace SimpleAdmin.App.Models
 {
     public abstract class RequestParamsBase : IPaginationInfo
     {

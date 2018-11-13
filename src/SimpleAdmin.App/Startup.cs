@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SimpleAdmin.Contracts.Users.Services;
 using SimpleAdmin.Services;
 
-namespace SimpleAdmin
+namespace SimpleAdmin.App
 {
     public class Startup
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace SimpleAdmin.Utils
+namespace SimpleAdmin.App.Utils
 {
     public static class ControllerUtils
     {

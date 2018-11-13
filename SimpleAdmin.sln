@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAdmin.Services", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAdmin.Contracts", "SimpleAdmin.Contracts\SimpleAdmin.Contracts.csproj", "{C2E0B076-40B1-4036-98F8-C1BFDB5FC374}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAdmin.Utils", "SimpleAdmin.Utils\SimpleAdmin.Utils.csproj", "{8CE7C507-62AF-4CD4-AF6C-5D1B66BCE86E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C2E0B076-40B1-4036-98F8-C1BFDB5FC374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E0B076-40B1-4036-98F8-C1BFDB5FC374}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E0B076-40B1-4036-98F8-C1BFDB5FC374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE7C507-62AF-4CD4-AF6C-5D1B66BCE86E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE7C507-62AF-4CD4-AF6C-5D1B66BCE86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE7C507-62AF-4CD4-AF6C-5D1B66BCE86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE7C507-62AF-4CD4-AF6C-5D1B66BCE86E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

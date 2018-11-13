@@ -1,4 +1,4 @@
-﻿namespace SimpleAdmin.Models
+﻿namespace SimpleAdmin.App.Models
 {
     public class RequestParams : RequestParamsBase
     {

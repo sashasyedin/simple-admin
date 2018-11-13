@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using SimpleAdmin.App.Models;
+using SimpleAdmin.App.Utils;
 using SimpleAdmin.Contracts.Users.DTO;
 using SimpleAdmin.Contracts.Users.Models;
 using SimpleAdmin.Contracts.Users.Services;
-using SimpleAdmin.Models;
 using SimpleAdmin.Utils;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +17,9 @@ namespace SimpleAdmin.Controllers
 
         public UsersController(IUserService userService)
         {
-            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+            Assert.NotNull(userService, nameof(userService));
+
+            _userService = userService;
         }
 
         [HttpPost("users")]
