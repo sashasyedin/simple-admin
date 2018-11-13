@@ -1,5 +1,6 @@
-﻿using SimpleAdmin.Services.Contracts;
-using SimpleAdmin.Services.Models;
+﻿using SimpleAdmin.Contracts.Users.DTO;
+using SimpleAdmin.Contracts.Users.Models;
+using SimpleAdmin.Contracts.Users.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace SimpleAdmin.Services
             throw new NotImplementedException();
         }
 
-        public async Task<long> CreateUser(User user)
+        public async Task<long> CreateUser(UserDto user)
         {
             throw new NotImplementedException();
         }
@@ -33,7 +34,7 @@ namespace SimpleAdmin.Services
             throw new NotImplementedException();
         }
 
-        public async Task UpdateUser(long id, User user)
+        public async Task UpdateUser(long id, UserDto user)
         {
             throw new NotImplementedException();
         }

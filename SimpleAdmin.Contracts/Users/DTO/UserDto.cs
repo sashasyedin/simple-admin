@@ -1,6 +1,6 @@
-﻿namespace SimpleAdmin.Services.Models
+﻿namespace SimpleAdmin.Contracts.Users.DTO
 {
-    public class User
+    public class UserDto
     {
         public long Id { get; set; }
 

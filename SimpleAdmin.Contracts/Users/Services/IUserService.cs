@@ -1,8 +1,9 @@
-﻿using SimpleAdmin.Services.Models;
+﻿using SimpleAdmin.Contracts.Users.DTO;
+using SimpleAdmin.Contracts.Users.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SimpleAdmin.Services.Contracts
+namespace SimpleAdmin.Contracts.Users.Services
 {
     public interface IUserService
     {
@@ -12,10 +13,10 @@ namespace SimpleAdmin.Services.Contracts
 
         Task<(IEnumerable<User>, int)> GetUsers(string filter, int pageSize, int pageNumber);
 
-        Task<long> CreateUser(User user);
+        Task<long> CreateUser(UserDto user);
 
         Task DeleteUser(long id);
 
-        Task UpdateUser(long id, User user);
+        Task UpdateUser(long id, UserDto user);
     }
 }

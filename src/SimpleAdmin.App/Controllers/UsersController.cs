@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using SimpleAdmin.Contracts.Users.DTO;
+using SimpleAdmin.Contracts.Users.Models;
+using SimpleAdmin.Contracts.Users.Services;
 using SimpleAdmin.Models;
-using SimpleAdmin.Services.Contracts;
-using SimpleAdmin.Services.Models;
 using SimpleAdmin.Utils;
 using System;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace SimpleAdmin.Controllers
         }
 
         [HttpPost("users")]
-        public async Task<IActionResult> CreateUser([FromBody] User user)
+        public async Task<IActionResult> CreateUser([FromBody] UserDto user)
         {
             if (user == null)
             {
@@ -41,12 +42,19 @@ namespace SimpleAdmin.Controllers
         [HttpGet("users/{id}")]
         public async Task<IActionResult> GetUser(long id)
         {
-            var response = await _userService.GetUser(id);
+            var user = await _userService.GetUser(id);
 
-            if (response == null)
+            if (user == null)
             {
                 return NotFound();
             }
+
+            var response = new UserDto
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Age = user.Age
+            };
 
             return Ok(response);
         }
@@ -80,7 +88,7 @@ namespace SimpleAdmin.Controllers
         }
 
         [HttpPut("users/{id}")]
-        public async Task<IActionResult> UpdateUser(long id, [FromBody] User user)
+        public async Task<IActionResult> UpdateUser(long id, [FromBody] UserDto user)
         {
             if (user == null)
             {
