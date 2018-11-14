@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SimpleAdmin.Contracts\SimpleAdmin.Contracts.csproj" />
+    <ProjectReference Include="..\SimpleAdmin.Contracts\SimpleAdmin.Contracts.csproj" />
+    <ProjectReference Include="..\SimpleAdmin.Utils\SimpleAdmin.Utils.csproj" />
   </ItemGroup>
 
 </Project>
