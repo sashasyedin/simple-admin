@@ -1,4 +1,5 @@
-﻿using SimpleAdmin.Contracts.Users.DTO;
+﻿using SimpleAdmin.Common.Validation;
+using SimpleAdmin.Contracts.Users.DTO;
 using SimpleAdmin.Contracts.Users.Models;
 using SimpleAdmin.Contracts.Users.Services;
 using System;
@@ -24,7 +25,7 @@ namespace SimpleAdmin.Services
             throw new NotImplementedException();
         }
 
-        public async Task<long> CreateUser(UserDto user)
+        public async virtual Task<long> CreateUser([Valid] UserDto user)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +35,7 @@ namespace SimpleAdmin.Services
             throw new NotImplementedException();
         }
 
-        public async Task UpdateUser(long id, UserDto user)
+        public async virtual Task UpdateUser(long id, [Valid] UserDto user)
         {
             throw new NotImplementedException();
         }

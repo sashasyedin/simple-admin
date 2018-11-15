@@ -38,6 +38,20 @@ namespace SimpleAdmin.Utils
             }
         }
 
+        public static void GreaterThan<T>(T instance, string name, T greaterThan)
+            where T : struct, IComparable
+        {
+            if (instance.CompareTo(greaterThan) <= 0)
+            {
+                throw new ArgumentOutOfRangeException(name, $"Parameter {name} must be greater than {greaterThan}");
+            }
+        }
+
+        public static void GreaterThanZero(decimal instance, string name)
+        {
+            GreaterThan(instance, name, 0);
+        }
+
         public static void All<T>(IEnumerable<T> collection, Action<T> validateAction)
         {
             foreach (var element in collection)

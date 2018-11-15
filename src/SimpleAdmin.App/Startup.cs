@@ -1,11 +1,18 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SimpleAdmin.Common.Validation;
+using SimpleAdmin.Common.Validation.Abstractions;
 using SimpleAdmin.Contracts.Users.Services;
 using SimpleAdmin.Services;
+using System;
+using System.Reflection;
 
 namespace SimpleAdmin.App
 {
@@ -16,21 +23,42 @@ namespace SimpleAdmin.App
             Configuration = configuration;
         }
 
+        public IContainer ApplicationContainer { get; private set; }
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container:
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            // Register application services:
-            services.AddTransient<IUserService, UserService>();
 
             // In production, the React files will be served from this directory:
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            var builder = new ContainerBuilder();
+            builder.Populate(services);
+
+            // Register interceptors:
+            builder.RegisterType<ValidationInterceptor>();
+
+            // Register application services:
+            builder.RegisterType<UserService>()
+                .As<IUserService>()
+                .EnableClassInterceptors()
+                .InterceptedBy(typeof(ValidationInterceptor))
+                .SingleInstance();
+
+            // Validation:
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).As<IValidator>();
+            builder.RegisterType<ValidationService>().WithProperty("Enabled", true);
+
+            // Build IoC Container:
+            ApplicationContainer = builder.Build();
+
+            return new AutofacServiceProvider(ApplicationContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline:
@@ -43,10 +71,8 @@ namespace SimpleAdmin.App
             else
             {
                 app.UseExceptionHandler("/Error");
-                app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 

@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleAdmin.Common\SimpleAdmin.Common.csproj" />
+    <ProjectReference Include="..\SimpleAdmin.Utils\SimpleAdmin.Utils.csproj" />
+  </ItemGroup>
+
 </Project>
