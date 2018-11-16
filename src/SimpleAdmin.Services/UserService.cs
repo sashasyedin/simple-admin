@@ -10,32 +10,32 @@ namespace SimpleAdmin.Services
 {
     public class UserService : IUserService
     {
-        public async Task<User> GetUser(long id)
+        public virtual async Task<User> GetUser(long id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<User>> GetUsers(long[] ids)
+        public virtual async Task<IEnumerable<User>> GetUsers(long[] ids)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<(IEnumerable<User>, int)> GetUsers(string filter, int pageSize, int pageNumber)
+        public virtual async Task<(IEnumerable<User>, int)> GetUsers(string filter, int pageSize, int pageNumber)
         {
             throw new NotImplementedException();
         }
 
-        public async virtual Task<long> CreateUser([Valid] UserDto user)
+        public virtual async Task<long> CreateUser([Valid] UserDto user)
         {
             throw new NotImplementedException();
         }
 
-        public async Task DeleteUser(long id)
+        public virtual async Task DeleteUser(long id)
         {
             throw new NotImplementedException();
         }
 
-        public async virtual Task UpdateUser(long id, [Valid] UserDto user)
+        public virtual async Task UpdateUser(long id, [Valid] UserDto user)
         {
             throw new NotImplementedException();
         }
