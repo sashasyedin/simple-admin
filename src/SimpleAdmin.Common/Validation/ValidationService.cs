@@ -8,13 +8,15 @@ namespace SimpleAdmin.Common.Validation
 {
     public class ValidationService
     {
-        private readonly ConcurrentDictionary<Type, IValidator> m_validators = new ConcurrentDictionary<Type, IValidator>();
+        private readonly ConcurrentDictionary<Type, IValidator> _validators;
 
         public ValidationService()
         {
+            _validators = new ConcurrentDictionary<Type, IValidator>();
         }
 
         public ValidationService(IEnumerable<IValidator> validators)
+            : this()
         {
             foreach (var validator in validators)
             {
@@ -28,14 +30,14 @@ namespace SimpleAdmin.Common.Validation
         {
             Assert.NotNull(validator, nameof(validator));
 
-            m_validators[validator.SupportedType()] = validator;
+            _validators[validator.SupportedType()] = validator;
         }
 
         public IValidator GetValidator(Type type)
         {
             Assert.NotNull(type, nameof(type));
 
-            m_validators.TryGetValue(type, out IValidator validator);
+            _validators.TryGetValue(type, out IValidator validator);
             return validator;
         }
 

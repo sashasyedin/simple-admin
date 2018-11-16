@@ -6,13 +6,13 @@ namespace SimpleAdmin.Common.Validation
 {
     public class ValidationInterceptor : IInterceptor
     {
-        private readonly ValidationService m_validationService;
+        private readonly ValidationService _validationService;
 
         public ValidationInterceptor(ValidationService validationService)
         {
             Assert.NotNull(validationService, nameof(validationService));
 
-            m_validationService = validationService;
+            _validationService = validationService;
         }
 
         public void Intercept(IInvocation invocation)
@@ -25,7 +25,7 @@ namespace SimpleAdmin.Common.Validation
 
                 if (attr != null)
                 {
-                    m_validationService.Validate(p.ParameterType, invocation.Arguments[idx]);
+                    _validationService.Validate(p.ParameterType, invocation.Arguments[idx]);
                 }
 
                 idx++;

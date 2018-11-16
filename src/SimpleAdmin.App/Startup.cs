@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SimpleAdmin.Common.Tx;
 using SimpleAdmin.Common.Validation;
 using SimpleAdmin.Common.Validation.Abstractions;
 using SimpleAdmin.Contracts.Users.Services;
@@ -42,18 +43,18 @@ namespace SimpleAdmin.App
             builder.Populate(services);
 
             // Register interceptors:
-            builder.RegisterType<ValidationInterceptor>();
+            RegisterInterceptors(builder);
 
             // Register application services:
             builder.RegisterType<UserService>()
                 .As<IUserService>()
                 .EnableClassInterceptors()
-                .InterceptedBy(typeof(ValidationInterceptor))
+                .InterceptedBy(typeof(TransactionalInterceptor), typeof(ValidationInterceptor))
                 .SingleInstance();
 
             // Validation:
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).As<IValidator>();
-            builder.RegisterType<ValidationService>().WithProperty("Enabled", true);
+            builder.RegisterType<ValidationService>();
 
             // Build IoC Container:
             ApplicationContainer = builder.Build();
@@ -92,6 +93,12 @@ namespace SimpleAdmin.App
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+        }
+
+        private void RegisterInterceptors(ContainerBuilder container)
+        {
+            container.RegisterType<TransactionalInterceptor>();
+            container.RegisterType<ValidationInterceptor>();
         }
     }
 }
