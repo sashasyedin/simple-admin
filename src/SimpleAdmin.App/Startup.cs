@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleAdmin.Common.Autofac.Extensions;
+using SimpleAdmin.Common.DateAndTime;
 using SimpleAdmin.Common.Tx;
 using SimpleAdmin.Common.Validation;
 using SimpleAdmin.Common.Validation.Abstractions;
@@ -42,7 +43,7 @@ namespace SimpleAdmin.App
             var builder = new ContainerBuilder();
             builder.Populate(services);
 
-            // Register interceptors:
+            RegisterProviders(builder);
             RegisterInterceptors(builder);
 
             // Register application services:
@@ -95,6 +96,11 @@ namespace SimpleAdmin.App
         {
             container.RegisterType<TransactionalInterceptor>();
             container.RegisterType<ValidationInterceptor>();
+        }
+
+        private void RegisterProviders(ContainerBuilder container)
+        {
+            container.RegisterType<DateTimeProvider>().SingleInstance();
         }
 
         private void RegisterUsersModule(ContainerBuilder container)
