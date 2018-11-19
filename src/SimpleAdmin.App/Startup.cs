@@ -20,14 +20,22 @@ namespace SimpleAdmin.App
 {
     public class Startup
     {
+        private const string ModelValidationKey = "EnableModelValidation";
+        private const string RedisConnStrName = "Redis";
+        private const string SqlConnStrName = "SqlDb";
+
+        private readonly EnvironmentConfig _environmentConfig;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _environmentConfig = new EnvironmentConfig.Builder()
+                .EnableModelValidation(configuration.GetValue<bool>(ModelValidationKey))
+                .RedisConnectionString(configuration.GetConnectionString(RedisConnStrName))
+                .SqlConnectionString(configuration.GetConnectionString(SqlConnStrName))
+                .Build();
         }
 
         public IContainer ApplicationContainer { get; private set; }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container:
         public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -51,7 +59,7 @@ namespace SimpleAdmin.App
 
             // Validation:
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).As<IValidator>();
-            builder.RegisterType<ValidationService>();
+            builder.RegisterType<ValidationService>().WithProperty("Enabled", _environmentConfig.EnableModelValidation);
 
             // Build IoC Container:
             ApplicationContainer = builder.Build();
