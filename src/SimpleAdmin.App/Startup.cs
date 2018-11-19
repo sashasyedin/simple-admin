@@ -1,12 +1,12 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SimpleAdmin.Common.Autofac.Extensions;
 using SimpleAdmin.Common.Tx;
 using SimpleAdmin.Common.Validation;
 using SimpleAdmin.Common.Validation.Abstractions;
@@ -46,11 +46,7 @@ namespace SimpleAdmin.App
             RegisterInterceptors(builder);
 
             // Register application services:
-            builder.RegisterType<UserService>()
-                .As<IUserService>()
-                .EnableClassInterceptors()
-                .InterceptedBy(typeof(TransactionalInterceptor), typeof(ValidationInterceptor))
-                .SingleInstance();
+            RegisterUsersModule(builder);
 
             // Validation:
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).As<IValidator>();
@@ -99,6 +95,11 @@ namespace SimpleAdmin.App
         {
             container.RegisterType<TransactionalInterceptor>();
             container.RegisterType<ValidationInterceptor>();
+        }
+
+        private void RegisterUsersModule(ContainerBuilder container)
+        {
+            container.RegisterService<IUserService, UserService>();
         }
     }
 }
