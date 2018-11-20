@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleAdmin.Common.Autofac.Extensions;
 using SimpleAdmin.Common.DateAndTime;
+using SimpleAdmin.Common.Redis;
+using SimpleAdmin.Common.Redis.Abstractions;
 using SimpleAdmin.Common.Tx;
 using SimpleAdmin.Common.Validation;
 using SimpleAdmin.Common.Validation.Abstractions;
@@ -54,7 +56,15 @@ namespace SimpleAdmin.App
             RegisterProviders(builder);
             RegisterInterceptors(builder);
 
-            // Register application services:
+            // Redis:
+            builder.RegisterType<RedisConnectionFactory>()
+                .As<IRedisConnectionFactory>()
+                .WithParameter("connectionString", _environmentConfig.RedisConnectionString)
+                .SingleInstance();
+
+            builder.RegisterType<RedisService>().SingleInstance();
+
+            // Register application modules:
             RegisterUsersModule(builder);
 
             // Validation:
