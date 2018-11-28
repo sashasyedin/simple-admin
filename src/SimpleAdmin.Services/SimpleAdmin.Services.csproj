@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SimpleAdmin.Common\SimpleAdmin.Common.csproj" />
     <ProjectReference Include="..\SimpleAdmin.Contracts\SimpleAdmin.Contracts.csproj" />
+    <ProjectReference Include="..\SimpleAdmin.Data\SimpleAdmin.Data.csproj" />
     <ProjectReference Include="..\SimpleAdmin.Utils\SimpleAdmin.Utils.csproj" />
   </ItemGroup>
 

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAdmin.Utils", "src\Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAdmin.Common", "src\SimpleAdmin.Common\SimpleAdmin.Common.csproj", "{7B62CA6C-DDE7-4C9A-AE23-1D1AA2F4CA53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAdmin.Data", "SimpleAdmin.Data\SimpleAdmin.Data.csproj", "{9D52C2AC-BAE5-4B21-9744-0CD0CC1A666B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAdmin.Data", "src\SimpleAdmin.Data\SimpleAdmin.Data.csproj", "{9D52C2AC-BAE5-4B21-9744-0CD0CC1A666B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
